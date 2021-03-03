@@ -12,32 +12,20 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
     printf("Charge Rate out of range!\n");
     return 0;
   }*/
-  if( TemperatureRange(temperature) || StateofCharge(soc) || chargeRatevalidity(chargeRate) )
-  {
-    printf(" Faulty Battery System");
+  int Validity = CheckAttributeRange(temperature,0,45) && CheckAttributeRange(soc,20,80) && CheckAttributeRange(chargeRate,0,0.8);
+  if(Validity) 
     return 0;
-  }
   else
-  {return 1;}
-}
-
-int TemperatureRange(float temperature)
-{
-  if(temperature>45)
-    return 0;
-}
-
-int StateofCharge(float soc)
-{
-  if(soc<20 || soc> 80)
-    return 0;
-}
-
-int chargeRatevalidity(float chargeRate)
-{
-  if(chargeRate > 0.8)
-    return 0;
+    return 1;
   
+}
+
+
+
+int CheckAttributeRange(float attribute, float lowerthreshold, float higherthreshold)
+{
+  if(attribute<lowerthreshold || attribute>higherthreshold)
+    return 0;
 }
 
 int main() {
