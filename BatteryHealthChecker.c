@@ -9,7 +9,8 @@
 #define CHARGERATETHRESHOLD 0.8F
 
 int CheckAttributeRange(float attribute, float lowerthreshold, float higherthreshold);
-
+int LowerThresholdChecker(float attribute, float lowerthreshold);
+int UpperThresholdChecker(float attribute, float upperthreshold);
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
   
