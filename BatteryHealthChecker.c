@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <assert.h>
-#include <stdbool.h>
+#include "BatteryHealthChecker.h"
 
 #define MAXTEMP 45.0F
 #define MINTEMP 0.0F
@@ -8,9 +6,7 @@
 #define MINSOC 20.0F
 #define CHARGERATETHRESHOLD 0.8F
 
-int CheckAttributeRange(float attribute, float lowerthreshold, float higherthreshold);
-int LowerThresholdChecker(float attribute, float lowerthreshold);
-int UpperThresholdChecker(float attribute, float upperthreshold);
+
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
   
