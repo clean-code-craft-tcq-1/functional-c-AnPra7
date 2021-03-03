@@ -7,23 +7,14 @@
 #define MINSOC 20.0F
 #define CHARGERATETHRESHOLD 0.8F
 
-
+int CheckAttributeRange(float attribute, float lowerthreshold, float higherthreshold);
 
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
-  /*if(temperature < 0 || temperature > 45) {
-    printf("Temperature out of range!\n");
-    return 0;
-  } else if(soc < 20 || soc > 80) {
-    printf("State of Charge out of range!\n");
-    return 0;
-  } else if(chargeRate > 0.8) {
-    printf("Charge Rate out of range!\n");
-    return 0;
-  }*/
+
   int Validity = CheckAttributeRange(temperature,MINTEMP,MAXTEMP) & CheckAttributeRange(soc,MINSOC,MAXSOC) & CheckAttributeRange(chargeRate,0.0,CHARGERATETHRESHOLD);
   
-   return Validity;
+  return Validity;
   
 }
 
@@ -31,7 +22,8 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
 
 int CheckAttributeRange(float attribute, float lowerthreshold, float higherthreshold)
 {
-  if(attribute < lowerthreshold || attribute > higherthreshold)
+  int AttributeRangevalidator = attribute < lowerthreshold || attribute > higherthreshold;
+  if(AttributeRangevalidator)
     return 0;
   else 
     return 1;
