@@ -12,7 +12,7 @@ int CheckAttributeRange(float attribute, float lowerthreshold, float higherthres
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
 
-  int Validity = CheckAttributeRange(temperature,MINTEMP,MAXTEMP) & CheckAttributeRange(soc,MINSOC,MAXSOC) & CheckAttributeRange(chargeRate,0.0,CHARGERATETHRESHOLD);
+  int Validity = CheckAttributeDualRange(temperature,MINTEMP,MAXTEMP) & CheckAttributeDualRange(soc,MINSOC,MAXSOC) & CheckifHigherthanRange(chargeRate,CHARGERATETHRESHOLD);
   
   return Validity;
   
@@ -20,10 +20,19 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
 
 
 
-int CheckAttributeRange(float attribute, float lowerthreshold, float higherthreshold)
+int CheckAttributeDualRange(float attribute, float lowerthreshold, float higherthreshold)
 {
   int AttributeRangevalidator = attribute < lowerthreshold || attribute > higherthreshold;
   if(AttributeRangevalidator)
+    return 0;
+  else 
+    return 1;
+}
+
+int CheckifHigherthanRange(float attribute, float threshold)
+{
+  int IsRangeValid = attribute > threshold;
+  if(IsRangeValid)
     return 0;
   else 
     return 1;
