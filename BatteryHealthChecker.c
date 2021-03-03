@@ -65,7 +65,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
   ChargeRateStatus       = UpperThresholdChecker(chargeRate,CHARGERATETHRESHOLD);
   FaultyMessageChargeRate(ChargeRateStatus);
 
-  ValidityofBattery = (TemperatureStatus)&(SOCStatus)&ChargeRateRange;
+  ValidityofBattery = (TemperatureStatus)&(SOCStatus)&ChargeRateStatus;
   
   if(ValidityofBattery)
     printf("Battery is fine");
