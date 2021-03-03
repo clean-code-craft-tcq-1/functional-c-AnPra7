@@ -13,10 +13,8 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
     return 0;
   }*/
   int Validity = CheckAttributeRange(temperature,0,45) & CheckAttributeRange(soc,20,80) & CheckAttributeRange(chargeRate,0,0.8);
-  if(Validity) 
-    return 0;
-  else
-    return 1;
+  
+   return Validity;
   
 }
 
