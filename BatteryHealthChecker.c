@@ -30,7 +30,7 @@ Validity = (TemperatureLowerRange&TemperatureHigherRange)&(SOCLowerRange&SOCHigh
 
 int LowerThresholdChecker(float attribute, float lowerthreshold)
 {
-  int isValid = attribute < lowerthreshold;
+  bool isValid = attribute < lowerthreshold;
   if(isValid)
     return 0;
   else return 1;
@@ -38,7 +38,7 @@ int LowerThresholdChecker(float attribute, float lowerthreshold)
 
 int UpperThresholdChecker(float attribute, float upperthreshold)
 {
-  int isValid = attribute > upperthreshold;
+  bool isValid = attribute > upperthreshold;
   if(isValid)
     return 0;
   else return 1;
