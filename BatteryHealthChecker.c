@@ -23,7 +23,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
 int CheckAttributeDualRange(float attribute, float lowerthreshold, float higherthreshold)
 {
   int AttributeRangevalidator = attribute < lowerthreshold || attribute > higherthreshold;
-  if(AttributeRangevalidator)
+  if(AttributeRangevalidator==0)
     return 0;
   else 
     return 1;
@@ -32,7 +32,7 @@ int CheckAttributeDualRange(float attribute, float lowerthreshold, float highert
 int CheckifHigherthanRange(float attribute, float threshold)
 {
   int IsRangeValid = attribute > threshold;
-  if(IsRangeValid)
+  if(IsRangeValid==0)
     return 0;
   else 
     return 1;
