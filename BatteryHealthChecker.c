@@ -20,7 +20,7 @@ SOCLowerRange          = LowerThresholdChecker(soc,MINSOC) ;
 SOCHigherRange         = UpperThresholdChecker(soc,MAXSOC); 
 ChargeRateRange        = UpperThresholdChecker(chargeRate,CHARGERATETHRESHOLD);
   
-Validity = (TemperatureLowerRange&TemperatureLowerRange)&(SOCLowerRange&SOCHigherRange)&ChargeRateRange;
+Validity = (TemperatureLowerRange&TemperatureHigherRange)&(SOCLowerRange&SOCHigherRange)&ChargeRateRange;
   
  return Validity;
   
@@ -30,14 +30,16 @@ Validity = (TemperatureLowerRange&TemperatureLowerRange)&(SOCLowerRange&SOCHighe
 
 int LowerThresholdChecker(float attribute, float lowerthreshold)
 {
-  if(attribute < lowerthreshold)
+  int isValid = attribute < lowerthreshold;
+  if(isValid)
     return 0;
   else return 1;
 }
 
 int UpperThresholdChecker(float attribute, float upperthreshold)
 {
-  if(attribute > upperthreshold)
+  int isValid = attribute > upperthreshold;
+  if(isValid)
     return 0;
   else return 1;
 }
