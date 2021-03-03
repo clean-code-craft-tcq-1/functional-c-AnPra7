@@ -12,7 +12,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
     printf("Charge Rate out of range!\n");
     return 0;
   }*/
-  bool Validity = CheckAttributeRange(temperature,0,45) & CheckAttributeRange(soc,20,80) & CheckAttributeRange(chargeRate,0,0.8);
+  int Validity = CheckAttributeRange(temperature,0,45) & CheckAttributeRange(soc,20,80) & CheckAttributeRange(chargeRate,0,0.8);
   if(Validity) 
     return 0;
   else
@@ -22,7 +22,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
 
 
 
-bool CheckAttributeRange(float attribute, float lowerthreshold, float higherthreshold)
+int CheckAttributeRange(float attribute, float lowerthreshold, float higherthreshold)
 {
   if(attribute<lowerthreshold || attribute>higherthreshold)
     return 0;
