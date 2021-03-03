@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
+#include <stdbool.h>
 
 #define MAXTEMP 45.0F
 #define MINTEMP 0.0F
