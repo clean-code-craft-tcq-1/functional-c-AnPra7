@@ -27,24 +27,30 @@ int UpperThresholdChecker(float attribute, float upperthreshold)
 
 void FaultyMessageTemperature(int TemperatureStatus)
 {
-  if TemperatureStatus
+  if(TemperatureStatus)
+  {
   printf("Temperature out of range");
+  }
 }
 void FaultyMessageSOC(int SOCStatus)
 {
-  if SOCStatus
+  if(SOCStatus)
+  {
   printf("SOC out of range");
+  }
 }
 void FaultyMessageChargeRate(int ChargeRateStatus)
 {
-  if ChargeRateStatus
+  if(ChargeRateStatus)
+  {
   printf("ChargeRate out of range");
+  }
 }
 
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
   
-  int TemperatureLowerRange,TemperatureHigherRange,TemperatureStatus,SOCLowerRange,SOCHigherRange,SOCStatus,ChargeRateStatus,Validity;
+  int TemperatureLowerRange,TemperatureHigherRange,TemperatureStatus,SOCLowerRange,SOCHigherRange,SOCStatus,ChargeRateStatus,ValidityofBattery;
 
   TemperatureLowerRange  = LowerThresholdChecker(temperature,MINTEMP);
   TemperatureHigherRange = UpperThresholdChecker(temperature,MAXTEMP) ;
