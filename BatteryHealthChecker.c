@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <assert.h>
 
+#define MAXTEMP 45.0F
+#define MINTEMP 0.0F
+#define MAXSOC 80.0F
+#define MINSOC 20.0F
+#define CHARGERATETHRESHOLD 0.8F
+
+
+
+
 int batteryIsOk(float temperature, float soc, float chargeRate) {
   /*if(temperature < 0 || temperature > 45) {
     printf("Temperature out of range!\n");
@@ -12,7 +21,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
     printf("Charge Rate out of range!\n");
     return 0;
   }*/
-  int Validity = CheckAttributeRange(temperature,0.0,45.0) & CheckAttributeRange(soc,20.0,80.0) & CheckAttributeRange(chargeRate,0.0,0.8);
+  int Validity = CheckAttributeRange(temperature,MINTEMP,MAXTEMP) & CheckAttributeRange(soc,MINSOC,MAXSOC) & CheckAttributeRange(chargeRate,0.0,CHARGERATETHRESHOLD);
   
    return Validity;
   
@@ -22,7 +31,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
 
 int CheckAttributeRange(float attribute, float lowerthreshold, float higherthreshold)
 {
-  if(attribute<lowerthreshold || attribute>higherthreshold)
+  if(attribute < lowerthreshold || attribute > higherthreshold)
     return 0;
   else 
     return 1;
