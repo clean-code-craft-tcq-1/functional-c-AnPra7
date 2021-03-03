@@ -25,16 +25,22 @@ int UpperThresholdChecker(float attribute, float upperthreshold)
   else return 1;
 }
 
-void FaultyMessage(int TemperatureStatus, int SOCStatus, int ChargeRateStatus)
+void FaultyMessageTemperature(int TemperatureStatus)
 {
-  if(TemperatureStatus==0)
-   printf("Temperature our of range");
-  if(SOCStatus==0)
-   printf("SOCStatus our of range");
-  if(ChargeRateStatus==0)
-   printf("ChargeRateStatus our of range");
-  
+  if TemperatureStatus
+  printf("Temperature out of range");
 }
+void FaultyMessageSOC(int SOCStatus)
+{
+  if SOCStatus
+  printf("SOC out of range");
+}
+void FaultyMessageChargeRate(int ChargeRateStatus)
+{
+  if ChargeRateStatus
+  printf("ChargeRate out of range");
+}
+
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
   
@@ -43,13 +49,20 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
   TemperatureLowerRange  = LowerThresholdChecker(temperature,MINTEMP);
   TemperatureHigherRange = UpperThresholdChecker(temperature,MAXTEMP) ;
   TemperatureStatus      = TemperatureLowerRange&TemperatureHigherRange;
+  FaultyMessageTemperature(TemperatureStatus);
+  
   SOCLowerRange          = LowerThresholdChecker(soc,MINSOC) ;
   SOCHigherRange         = UpperThresholdChecker(soc,MAXSOC); 
-  SOCStatus              = SOCLowerRange&SOCHigherRange
+  SOCStatus              = SOCLowerRange&SOCHigherRange;
+  FaultyMessageSOC(SOCStatus);
+  
   ChargeRateStatus       = UpperThresholdChecker(chargeRate,CHARGERATETHRESHOLD);
+  FaultyMessageChargeRate(ChargeRateStatus);
 
   ValidityofBattery = (TemperatureStatus)&(SOCStatus)&ChargeRateRange;
-  FaultyMessage(TemperatureStatus,SOCStatus,ChargeRateStatus);
+  
+  if(ValidityofBattery)
+    printf("Battery is fine");
   
  return ValidityofBattery;
   
