@@ -22,10 +22,12 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
 
 
 
-int CheckAttributeRange(float attribute, float lowerthreshold, float higherthreshold)
+bool CheckAttributeRange(float attribute, float lowerthreshold, float higherthreshold)
 {
   if(attribute<lowerthreshold || attribute>higherthreshold)
     return 0;
+  else 
+    return 1;
 }
 
 int main() {
