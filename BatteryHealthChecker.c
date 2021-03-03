@@ -9,6 +9,11 @@
 #define MINSOC 20.0F
 #define CHARGERATETHRESHOLD 0.8F
 
+********************************************************************************
+ * A function that checks the lower range of the passed attribute
+ * attribute can be temperature , state of charge or Charge Rate
+ * Thresholds has been defined globally
+ *********************************************************************************/
 int LowerThresholdChecker(float attribute, float lowerthreshold)
 {
   bool isValid = attribute < lowerthreshold;
@@ -16,7 +21,11 @@ int LowerThresholdChecker(float attribute, float lowerthreshold)
     return 0;
   else return 1;
 }
-
+********************************************************************************
+ * A function that checks the higher range of the passed attribute
+ * attribute can be temperature , state of charge or Charge Rate
+ * Thresholds has been defined globally
+ *********************************************************************************/
 int UpperThresholdChecker(float attribute, float upperthreshold)
 {
   bool isValid = attribute > upperthreshold;
@@ -25,6 +34,9 @@ int UpperThresholdChecker(float attribute, float upperthreshold)
   else return 1;
 }
 
+********************************************************************************
+ * A function that prints the temperature abnormality
+ *********************************************************************************/
 void FaultyMessageTemperature(int TemperatureStatus)
 {
   if(TemperatureStatus)
@@ -32,6 +44,9 @@ void FaultyMessageTemperature(int TemperatureStatus)
   printf("Temperature out of range");
   }
 }
+********************************************************************************
+ * A function that prints the SOC abnormality
+ *********************************************************************************/
 void FaultyMessageSOC(int SOCStatus)
 {
   if(SOCStatus)
@@ -39,6 +54,9 @@ void FaultyMessageSOC(int SOCStatus)
   printf("SOC out of range");
   }
 }
+********************************************************************************
+ * A function that prints the Charge Rate abnormality
+ *********************************************************************************/
 void FaultyMessageChargeRate(int ChargeRateStatus)
 {
   if(ChargeRateStatus)
@@ -47,7 +65,9 @@ void FaultyMessageChargeRate(int ChargeRateStatus)
   }
 }
 
-
+********************************************************************************
+ * A function that gives the overall Status of the battery manmagement system
+ *********************************************************************************/
 int batteryIsOk(float temperature, float soc, float chargeRate) {
   
   int TemperatureLowerRange,TemperatureHigherRange,TemperatureStatus,SOCLowerRange,SOCHigherRange,SOCStatus,ChargeRateStatus,ValidityofBattery;
